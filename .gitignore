@@ -4,7 +4,7 @@ Thumbs.db
 
 # --- IDE (IntelliJ/Android Studio) ---
 *.iml
-.idea/
+.idea/*
 !.idea/codeStyles
 !.idea/runConfigurations
 
@@ -50,3 +50,27 @@ app/**/databases/*.sqlite*
 # --- Compose compiler optional reports (ignore if you enable them) ---
 compose-metrics/
 compose-reports/
+
+# --- Python / ML ---
+__pycache__/
+*.py[cod]
+*.ipynb_checkpoints
+.venv/
+venv/
+.env
+.env.*
+
+# --- iOS / Xcode (for future Compose iOS target) ---
+iosApp/Pods/
+*.xcworkspace
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+DerivedData/
+
+# --- Build / output stuff not needed in repo ---
+out/
+bin/
+
+# JetBrains Fleet / other editors
+.fleet/
