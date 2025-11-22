@@ -6,7 +6,8 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
-    alias(libs.plugins.kotlinx.serialization)}
+    alias(libs.plugins.kotlinx.serialization)
+}
 
 android {
     namespace = "com.simbiri.artnovax"
@@ -52,37 +53,34 @@ kotlin {
 
 
 dependencies {
+    // Core + lifecycle + activity
+    implementation(libs.bundles.androidx.core)
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
+    // Compose BOM
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.core.splashscreen)
-    implementation(libs.navigation.compose)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.androidx.datastore.preferences)
-    implementation(libs.kotlinx.datetime)
-    implementation(libs.androidx.ui.text.google.fonts)
+    //UI toolkit
+    implementation(libs.bundles.androidx.compose)
 
+    // App-common AndroidX / Kotlin utilities e.g serialization/date time
+    implementation(libs.bundles.androidx.app.common)
+
+    // Ktor / Coil / Koin (existing bundles)
+    implementation(libs.bundles.koin)
     implementation(libs.bundles.ktor)
     implementation(libs.bundles.coil)
-    implementation(libs.bundles.koin)
 
-    //Room
-    implementation(libs.room.ktx)
-    implementation(libs.room.runtime)
+    // Room
+    implementation(libs.bundles.room)
     ksp(libs.room.compiler)
+
+    // Unit tests
+    testImplementation(libs.bundles.test.unit)
+
+    // Android instrumented tests
+    androidTestImplementation(libs.bundles.test.android)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+
+    // Debug tooling
+    debugImplementation(libs.bundles.debug.android)
 }

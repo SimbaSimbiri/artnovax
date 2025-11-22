@@ -50,3 +50,11 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         textAlign = TextAlign.Center
     )
 }
+
+@Preview
+@Composable
+fun GreetingPreview() {
+    ArtnovaxTheme {
+        Greeting(name = "Hey there, welcome to Art")
+    }
+}
